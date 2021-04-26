@@ -2,6 +2,7 @@
 
 const todoList = document.querySelector(".todos");
 const addTodo = document.querySelector(".add");
+const search = document.querySelector(".search__input");
 
 // add todos
 const generateTemplate = (todo) => {
@@ -29,4 +30,20 @@ todoList.addEventListener("click", (e) => {
 	if (e.target.classList.contains("delete")) {
 		e.target.parentElement.remove();
 	}
+});
+
+// search (filter) todos
+const filterTodos = (term) => {
+	Array.from(todoList.children)
+		.filter((todo) => !todo.textContent.toLowerCase().includes(term))
+		.forEach((todo) => todo.classList.add("filtered"));
+
+	Array.from(todoList.children)
+		.filter((todo) => todo.textContent.toLowerCase().includes(term))
+		.forEach((todo) => todo.classList.remove("filtered"));
+};
+
+search.addEventListener("keyup", () => {
+	const term = search.value.trim().toLowerCase();
+	filterTodos(term);
 });
