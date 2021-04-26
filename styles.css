@@ -16,6 +16,7 @@ input[type="text"] {
 
 input[type="text"]:focus,
 input[type="text"]:hover {
+	color: rgba(255, 255, 210, 0.9);
 	background-color: rgba(42, 42, 46, 0.9);
 }
 
